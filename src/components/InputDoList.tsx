@@ -20,9 +20,8 @@ const InputDoList : React.FC = () => {
 
   const handleCreateTodos = async(e : React.MouseEvent<HTMLButtonElement>) : Promise<void> =>{
     e.preventDefault();
-
-
-      const newTodo : Todo = {
+      
+    const newTodo : Todo = {
         id : crypto.randomUUID(),
         title,
         content,
@@ -32,7 +31,6 @@ const InputDoList : React.FC = () => {
       addTodo(newTodo);
       setTitle('');
       setContent('');
-
     
   }
 

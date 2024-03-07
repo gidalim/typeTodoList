@@ -1,10 +1,10 @@
 import InputDoList from "../components/InputDoList";
-// import TodoList from "../components/TodoList";
+import TodoList from "../components/TodoList";
 import { useQueryTodo } from "../hooks/useQueryTodo"
 
 const Home = () => {
 
-  const {data, isLoading, isError} = useQueryTodo();
+  const {isLoading, isError} = useQueryTodo();
 
   if(isLoading){
     return <>페이지 로딩중</>
@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div>
       <InputDoList/>
-      {/* <TodoList/> */}
+      <TodoList/>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { Todo } from "../types/Todo";
-import { useGetTodo } from "../hooks/useGetTodo";
+import { useQueryTodo } from "../hooks/useQueryTodo";
 import { useDeleteTodo } from "../hooks/useDeleteTodo";
 import { useUpdateTodo } from "../hooks/useUpdateTodo";
 
@@ -8,7 +8,6 @@ export type TodoItems = {
   handleDeleteTodo : (id : string) => void;
   handleUpdateTodo : (id : string, isDone: boolean) => void;
 }
-
 
 export const TodoItem: React.FC<TodoItems> = ({todo, handleDeleteTodo, handleUpdateTodo}) =>{
   return (
@@ -21,14 +20,12 @@ export const TodoItem: React.FC<TodoItems> = ({todo, handleDeleteTodo, handleUpd
   )
 }
 
-
 const TodoList :React.FC = () => {
 
-  const {data = [], isLoading} = useGetTodo();
+  const {data, isLoading} = useQueryTodo();
 
-
-  const { mutate : deleteTodo } = useDeleteTodo();
-  const { mutate : updateTodo } = useUpdateTodo(updateDoList);
+  const {deleteTodo} = useDeleteTodo();
+  const {updateTodo} = useUpdateTodo();
 
   const handleDeleteTodo = (id: string) =>{
     deleteTodo (id);
