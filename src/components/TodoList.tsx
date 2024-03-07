@@ -15,7 +15,7 @@ export const TodoItem: React.FC<TodoItems> = ({todo, handleDeleteTodo, handleUpd
       <li>{todo.title}</li>
       <li>{todo.content}</li>
       <button onClick={()=> handleDeleteTodo(todo.id)}>삭제</button>
-      <button onClick={()=> handleUpdateTodo(todo.id, todo.isDone)}>{todo.isDone ? '취소' : '완료'}</button>
+      <button onClick={()=> handleUpdateTodo(todo.id, !todo.isDone)}>{todo.isDone ? '취소' : '완료'}</button>
     </div>
   )
 }

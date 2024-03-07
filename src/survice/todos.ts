@@ -1,4 +1,5 @@
 import instance from "../api";
+import { UpdateTodoType } from "../hooks/useUpdateTodo";
 import { Todo } from "../types/Todo";
 
 export const getTodoList = async () : Promise<Todo[]>=>{
@@ -11,8 +12,8 @@ export const createDoList = async(doList: Todo) : Promise<Todo> =>{
   return response.data
 }
 
-export const updateDoList = async ({id, isDone} : {id: string; isDone: boolean}) : Promise<Todo> =>{
-  const response = await instance.patch(`/Todo/${id}`, {isDone});
+export const updateDoList = async (data : UpdateTodoType) : Promise<Todo> =>{
+  const response = await instance.patch(`/Todo/${data.id}`, {isDone : data.isDone});
   return response.data;
 }
 

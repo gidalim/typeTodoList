@@ -7,7 +7,7 @@ import { QUERY_KEYS } from "./keys.constant"
 
 export const useCreateTodo = () =>{
   const {mutate} = useMutation({
-    mutationFn : async( data: Todo) =>{
+    mutationFn : async(data: Todo) =>{
       return await createDoList(data)
     },
     onSuccess : async () =>{
