@@ -1,12 +1,17 @@
 import { useMutation } from "@tanstack/react-query"
-import { Todo } from "../types/Todo"
+import { queryClient } from "../main";
+import { QUERY_KEYS } from "./keys.constant";
+import { Todo } from "../types/Todo";
+import { updateDoList } from "../survice/todos";
 
-
-type UpdateDoListFn = ({id, isDone}: {id: string; isDone : boolean}) =>Promise<Todo>;
-
-export const useUpdateTodo = (updateDoList :UpdateDoListFn) =>{
-  const {mutate} = useMutation<Todo, Error, {id:string; isDone : boolean}>({
-    mutationFn: updateDoList
+export const useUpdateTodo = () =>{
+  const {mutate : updateTodo} = useMutation({
+    mutationFn : async(data:Todo) =>{
+      return await updateDoList(data);
+    },
+    onSuccess: async () =>{
+      await queryClient.invalidateQueries({queryKey : [QUERY_KEYS.TODOLIST]})
+    }
   })
-  return mutate
-} 
+  return {updateTodo}
+}

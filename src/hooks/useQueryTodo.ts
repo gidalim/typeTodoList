@@ -3,7 +3,7 @@ import { QUERY_KEYS } from "./keys.constant";
 import { getTodoList } from "../survice/todos";
 
 
-export const useGetTodo = () =>{
+export const useQueryTodo = () =>{
   const {data, isLoading, isError} = useQuery({
     queryKey : [QUERY_KEYS.TODOLIST],
     queryFn : async () => {

@@ -2,7 +2,7 @@ import instance from "../api";
 import { Todo } from "../types/Todo";
 
 export const getTodoList = async () : Promise<Todo[]>=>{
-  const response = await instance.get<Todo[]>(`/Todo`)
+  const response = await instance.get(`/Todo`)
   return response.data
 }
 

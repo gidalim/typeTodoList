@@ -1,10 +1,12 @@
 import { Todo } from "../types/Todo";
 import { useGetTodo } from "../hooks/useGetTodo";
+import { useDeleteTodo } from "../hooks/useDeleteTodo";
+import { useUpdateTodo } from "../hooks/useUpdateTodo";
 
 export type TodoItems = {
   todo : Todo;
-  handleDeleteTodo : (id : string) => Promise<void>;
-  handleUpdateTodo : (id : string, isDone: boolean) => Promise<void>;
+  handleDeleteTodo : (id : string) => void;
+  handleUpdateTodo : (id : string, isDone: boolean) => void;
 }
 
 
@@ -22,15 +24,29 @@ export const TodoItem: React.FC<TodoItems> = ({todo, handleDeleteTodo, handleUpd
 
 const TodoList :React.FC = () => {
 
-  const {data, isLoading} = useGetTodo();
-  const doList : Todo[]  = data.filter(todo => !todo.isDone);
-  const doneList : Todo[]  = data.filter(todo => todo.isDone);
+  const {data = [], isLoading} = useGetTodo();
+
+
+  const { mutate : deleteTodo } = useDeleteTodo();
+  const { mutate : updateTodo } = useUpdateTodo(updateDoList);
+
+  const handleDeleteTodo = (id: string) =>{
+    deleteTodo (id);
+  };
+
+  const handleUpdateTodo = (id:string, isDone : boolean) =>{
+    updateTodo ({id, isDone});
+  }
+
+  const doList = data.filter(todo => !todo.isDone);
+  const doneList  = data.filter(todo => todo.isDone);
 
   if(isLoading){
     return <>리스트 로딩중..</>
   }
   return (<>
     <div>
+      <h2>할 일</h2>
       {doList.map((todo : Todo)=>{
         return (
           <TodoItem
@@ -43,6 +59,7 @@ const TodoList :React.FC = () => {
         })}
     </div>
     <div>
+      <h2>완료한 일</h2>
       {doneList.map((todo : Todo)=>{
         return (
           <TodoItem
