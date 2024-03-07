@@ -1,15 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
-import { QUERY_KEYS } from "./keys.constant";
-import { getTodoList } from "../survice/todos";
+import { useMutation } from "@tanstack/react-query";
+import { Todo } from "../types/Todo";
 
 
-export const useDoListQuery = () =>{
-  const {data, isLoading, isError} = useQuery({
-    queryKey : [QUERY_KEYS.TODOLIST],
-    queryFn : async () => {
-      return await getTodoList();
-    },
-    initialData : []
-  })
-  return {data, isLoading, isError}
+type CreateDoListFn = (doList : Todo) => Promise<Todo>;
+
+export const useCreateTodo = (createDoList: CreateDoListFn) =>{
+  const { mutate } = useMutation <Todo, Error, Todo>({
+    mutationFn : createDoList
+  });
+  
+
+  return mutate;
 }
