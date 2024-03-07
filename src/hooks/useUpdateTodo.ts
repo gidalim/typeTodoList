@@ -5,7 +5,7 @@ import { Todo } from "../types/Todo";
 import { updateDoList } from "../survice/todos";
 
 export const useUpdateTodo = () =>{
-  const {mutate : updateTodo} = useMutation({
+  const {mutate} = useMutation({
     mutationFn : async(data:Todo) =>{
       return await updateDoList(data);
     },
@@ -13,5 +13,5 @@ export const useUpdateTodo = () =>{
       await queryClient.invalidateQueries({queryKey : [QUERY_KEYS.TODOLIST]})
     }
   })
-  return {updateTodo}
+  return {updateTodo : mutate}
 }

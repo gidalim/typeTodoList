@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { useQueryClient } from "@tanstack/react-query";
 import { Todo } from "../types/Todo";
-import { QUERY_KEYS } from "../hooks/keys.constant";
+import { useCreateTodo } from "../hooks/useCreateTodo";
 
 const InputDoList : React.FC = () => {
-  const queryClient = useQueryClient();
+  const {addTodo} = useCreateTodo();
 
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
@@ -21,23 +20,20 @@ const InputDoList : React.FC = () => {
 
   const handleCreateTodos = async(e : React.MouseEvent<HTMLButtonElement>) : Promise<void> =>{
     e.preventDefault();
-    try{
+
 
       const newTodo : Todo = {
         id : crypto.randomUUID(),
         title,
         content,
-        isDone: false,
+        isDone: false
       };
-    
-        await queryClient.invalidateQueries({queryKey : [QUERY_KEYS.TODOLIST]});
-    
+
+      addTodo(newTodo);
       setTitle('');
       setContent('');
 
-    }catch(error){
-      console.error('todoList 추가실패', error)
-    }
+    
   }
 
   return (

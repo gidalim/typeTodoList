@@ -5,7 +5,7 @@ import { QUERY_KEYS } from "./keys.constant"
 
 
 export const useDeleteTodo = () =>{
-  const {mutate : deleteTodo} = useMutation({
+  const {mutate} = useMutation({
     mutationFn : async (data : string) =>{
       return await deleteDoList(data)
     },
@@ -13,5 +13,5 @@ export const useDeleteTodo = () =>{
       await queryClient.invalidateQueries({queryKey : [QUERY_KEYS.TODOLIST]})
     }
   })
-  return {deleteTodo}
+  return {deleteTodo : mutate}
 }
