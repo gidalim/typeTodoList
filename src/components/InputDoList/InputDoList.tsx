@@ -8,19 +8,17 @@ const InputDoList: React.FC = () => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
 
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>): void => {
+  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setTitle(value);
   };
 
-  const handleChangeContent = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ): void => {
+  const handleChangeContent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     setContent(value);
   };
 
-  const handleCreateTodos = (e: React.FormEvent<HTMLFormElement>): void => {
+  const handleCreateTodos = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const newTodo: Todo = {
