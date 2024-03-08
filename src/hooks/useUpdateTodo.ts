@@ -1,10 +1,8 @@
 import { useMutation } from "@tanstack/react-query";
 import { queryClient } from "../main";
 import { QUERY_KEYS } from "./keys.constant";
-import { Todo } from "../types/Todo";
 import { updateDoList } from "../survice/todos";
-
-export type UpdateTodoType = Pick<Todo, "id" | "isDone">;
+import { UpdateTodoType } from "../types/Todo";
 
 export const useUpdateTodo = () => {
   const { mutate } = useMutation({
