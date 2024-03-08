@@ -1,28 +1,27 @@
 import axios from "axios";
 
-
 const instance = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_URL
-})
+  baseURL: import.meta.env.VITE_SERVER_URL,
+});
 
 instance.interceptors.request.use(
-  function(config){
-    return config
+  function (config) {
+    return config;
   },
-  function(error){
+  function (error) {
     console.error(error);
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);
 
 instance.interceptors.response.use(
-  function(response){
-    return response
+  function (response) {
+    return response;
   },
-  function(error){
+  function (error) {
     console.error(error);
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);
 
-export default instance
+export default instance;
