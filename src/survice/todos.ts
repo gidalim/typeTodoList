@@ -1,5 +1,5 @@
 import instance from "../api";
-import { UpdateTodoType } from "../hooks/useUpdateTodo";
+import { UpdateTodoType } from "../types/Todo";
 import { Todo } from "../types/Todo";
 
 export const getTodoList = async (): Promise<Todo[]> => {
