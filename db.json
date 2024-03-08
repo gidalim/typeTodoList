@@ -4,12 +4,6 @@
       "id": "6b4ac967-a6d9-46e7-9048-15d735efb76a",
       "title": "제목1",
       "content": "리액트",
-      "isDone": false
-    },
-    {
-      "id": "0b8b8628-1827-47a7-80bd-3b4f59a198b2",
-      "title": "제목2",
-      "content": "타입스크립트",
       "isDone": true
     },
     {
@@ -25,9 +19,9 @@
       "isDone": true
     },
     {
-      "id": "a4c7559a-bcb7-4bf7-af15-2413aa668151",
-      "title": "ㄹㄹㅇ",
-      "content": "ㄹㅇㄹㅇ",
+      "id": "64bfe1e6-7524-44f9-8721-419862757f4d",
+      "title": "타입스크립트",
+      "content": "빡공하기",
       "isDone": false
     }
   ]
