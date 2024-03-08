@@ -1,5 +1,5 @@
-import InputDoList from "../components/InputDoList";
-import TodoList from "../components/TodoList";
+import InputDoList from "../components/InputDoList/InputDoList";
+import TodoList from "../components/TodoList/TodoList";
 import { useQueryTodo } from "../hooks/useQueryTodo"
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
   }
 
   if(isError){
-    return <>에러가 났어요</>
+    return <>데이터를 받는데 실패했어요</>
   }
 
   return (

@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Todo } from "../types/Todo";
-import { useCreateTodo } from "../hooks/useCreateTodo";
+import { Todo } from "../../types/Todo";
+import { useCreateTodo } from "../../hooks/useCreateTodo";
+import styles from './InputDoList.module.css'
 
 const InputDoList : React.FC = () => {
   const {addTodo} = useCreateTodo();
@@ -35,15 +36,17 @@ const InputDoList : React.FC = () => {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <input value={title} 
         placeholder="입력해주세요"
-        onChange={handleChangeTitle}/>
+        onChange={handleChangeTitle}
+        />
       <input value={content} 
         placeholder="입력해주세요"
-        onChange={handleChangeContent}/>
+        onChange={handleChangeContent}
+        />
       <button onClick={handleCreateTodos}>생성버튼</button>
-      </>
+      </div>
   )
 }
 
