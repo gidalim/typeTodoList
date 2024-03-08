@@ -4,8 +4,8 @@ import { useCreateTodo } from "../../hooks/useCreateTodo";
 import styles from './InputDoList.module.css'
 
 const InputDoList : React.FC = () => {
+  
   const {addTodo} = useCreateTodo();
-
   const [title, setTitle] = useState<string>('');
   const [content, setContent] = useState<string>('');
 

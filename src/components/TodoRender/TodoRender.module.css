@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 250px;
+  border: 2px solid saddlebrown;
+  border-radius: 8px;
+  padding: 10px;
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .content {
+    height: 100px;
+  }
+}
+
+.toggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .deleteBtn:hover {
+    background-color: rgb(168, 82, 82);
+    transition: all 0.25s;
+  }
+
+  .updateBtn:hover {
+    background-color: rgb(114, 114, 253);
+    transition: all 0.25s;
+  }
+}

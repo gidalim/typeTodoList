@@ -4,7 +4,6 @@ import { QUERY_KEYS } from "./keys.constant";
 import { Todo } from "../types/Todo";
 import { updateDoList } from "../survice/todos";
 
-
 export type UpdateTodoType = Pick<Todo, 'id' | 'isDone'>
 
 export const useUpdateTodo = () =>{
